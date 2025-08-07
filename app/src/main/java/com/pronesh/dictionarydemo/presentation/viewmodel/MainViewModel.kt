@@ -24,17 +24,20 @@ class MainViewModel @Inject constructor(private val dictionaryRepository: Dictio
     private val _mainState = MutableStateFlow(MainState())
     val mainState = _mainState.asStateFlow()
 
-    private val searchJob: Job? = null
+    private var searchJob: Job? = null
 
     fun onEvent(mainUIEvent: MainUIEvent) {
         when (mainUIEvent) {
             MainUIEvent.OnSearchClick -> {
-                loadWordResult()
+                searchJob?.cancel()
+                searchJob= viewModelScope.launch {
+                    loadWordResult()
+                }
             }
 
             is MainUIEvent.OnSearchWord -> {
                 _mainState.update {
-                    it.copy(searchWord = mainUIEvent.newWord.toLowerCase())
+                    it.copy(searchWord = mainUIEvent.newWord.lowercase())
                 }
             }
         }

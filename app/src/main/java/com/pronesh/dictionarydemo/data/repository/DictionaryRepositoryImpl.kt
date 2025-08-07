@@ -1,6 +1,6 @@
 package com.pronesh.dictionarydemo.data.repository
 
-import com.pronesh.dictionarydemo.app.Application
+import android.app.Application
 import com.pronesh.dictionarydemo.data.api.DictionaryAPI
 import com.pronesh.dictionarydemo.data.mapper.toWordItem
 import com.pronesh.dictionarydemo.domain.model.WordItem

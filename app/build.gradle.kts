@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.dagger)
-    alias (libs.plugins.kotlin.ksp)
+    id ("com.google.devtools.ksp")
 }
 
 android {
